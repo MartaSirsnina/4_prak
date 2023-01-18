@@ -387,7 +387,7 @@ void top3Available(const string file) {
 
         delete[] prod;
     } else {
-        cout << "ERROR: unable to open file" << endl;
+        cout << "ERROR" << endl;
     }
     shopFile.close();
 }
@@ -419,7 +419,7 @@ void top3LeastAvailable(const string file) {
 
         delete[] prod;
     } else {
-        cout << "ERROR: unable to open file" << endl;
+        cout << "ERROR" << endl;
     }
     shopFile.close();
 }
@@ -429,7 +429,7 @@ void assortedProductsMenu(const string file) {
     shopFile.open(file, ios::in |ios::binary);
     float budget;
 
-    cout << "Enter budget: $";
+    cout << "Ievadiet budžetu: ";
     cin >> budget;
     float remainingBudget = budget;
 
@@ -448,7 +448,7 @@ void assortedProductsMenu(const string file) {
 
         map<string, pair<int, float>> productsBought;
 
-        cout << "Products bought:" << endl;
+        cout << "Nopirktie produkti:" << endl;
         for (int i = 0; i < length; i++) {
             if (remainingBudget >= prod[i].price && prod[i].available > 0) {
                 remainingBudget -= prod[i].price;
@@ -472,14 +472,16 @@ void assortedProductsMenu(const string file) {
         }
 
         for(auto const& [key, value] : productsBought) {
-            cout << key << " - Quantity: " << value.first << " - Total Price: $" << value.second << endl;
+            cout << "\nProdukta noasaukums:"<< key << endl;
+            cout << "Produkta daudzums: " << value.first << endl;
+            cout << "Kopējā summa: " << value.second << endl << endl;
         }
 
-        cout << "Remaining budget: $" << remainingBudget << endl;
+        cout << "Atlikušais budžets: " << remainingBudget << endl << endl;
 
         delete[] prod;
     } else {
-        cout << "ERROR: unable to open file" << endl;
+        cout << "ERROR" << endl;
     }
     shopFile.close();
 }
